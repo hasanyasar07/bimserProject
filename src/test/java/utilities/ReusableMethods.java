@@ -40,6 +40,17 @@ public class ReusableMethods {
         return target;
     }
 
+    public static String getCompany(String company){
+        return ConfigReader.getProperty(company);
+    }
+
+    public static String getUsername(String username){
+        return ConfigReader.getProperty(username);
+    }
+
+    public static String getPassword(String password){
+        return ConfigReader.getProperty(password);
+    }
 
 
 
