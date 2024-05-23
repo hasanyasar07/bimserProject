@@ -7,36 +7,34 @@ import pages.LoginPage;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class Dashboard {
+public class Dashboard extends BaseStep{
 
-    LoginPage loginPage=new LoginPage();
-    Dashboardpage dashboardpage=new Dashboardpage();
 
     @Given("Click the Application Menu")
     public void click_the_application_menu() {
         ReusableMethods.wait(2);
-        dashboardpage.appMenu.click();
+        dashboardpage.getAppMenu().click();
         ReusableMethods.wait(2);
     }
     @Given("Click the System button")
     public void click_the_system_button() {
-        dashboardpage.systemButton.click();
+        dashboardpage.getSystemButton().click();
         ReusableMethods.wait(2);
     }
     @Given("Click the Common Definitions button")
     public void click_the_common_definitions_button() {
-        dashboardpage.commonDefinitionsButton.click();
+        dashboardpage.getCommonDefinitionsButton().click();
         ReusableMethods.wait(2);
     }
     @Given("Click Vacation Days button")
     public void click_vacation_days_button() {
-        dashboardpage.vacationDaysButton.click();
+        dashboardpage.getVacationDaysButton().click();
     }
     @Given("Confirm that Vacation Days page is visible")
     public void confirm_that_vacation_days_page_is_visible() {
         ReusableMethods.wait(2);
         Driver.getDriver().switchTo().frame("mainFrame");
-        Assert.assertTrue(dashboardpage.vacationDaysText.isDisplayed());
+        Assert.assertTrue(dashboardpage.getVacationDaysText().isDisplayed());
         ReusableMethods.wait(2);
         Driver.closeDriver();
     }

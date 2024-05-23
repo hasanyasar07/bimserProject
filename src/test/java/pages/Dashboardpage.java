@@ -5,26 +5,48 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class Dashboardpage {
-    public Dashboardpage(){
-        PageFactory.initElements(Driver.getDriver(),this);
-    }
+public class Dashboardpage extends BasePage {
+
 
     @FindBy(xpath = "//a[@id='userId']")
-    public WebElement userIdText;
+    private WebElement userIdText;
 
     @FindBy(id = "init-app-menu")
-    public WebElement appMenu;
+    private WebElement appMenu;
 
     @FindBy(xpath = "//h3[text()='Sistem']")
-    public WebElement systemButton;
+    private WebElement systemButton;
 
     @FindBy(xpath = "//h3[text()='Ortak Tanımlar']")
-    public WebElement commonDefinitionsButton;
+    private WebElement commonDefinitionsButton;
 
     @FindBy(xpath = "//h3[text()='Tatil Günleri']")
-    public WebElement vacationDaysButton;
+    private WebElement vacationDaysButton;
 
     @FindBy(id = "TASPxRoundPanel1_xlbHeader")
-    public WebElement vacationDaysText;
+    private WebElement vacationDaysText;
+
+    public WebElement getUserIdText(){
+        return userIdText;
+    }
+
+    public WebElement getAppMenu() {
+        return appMenu;
+    }
+
+    public WebElement getCommonDefinitionsButton() {
+        return commonDefinitionsButton;
+    }
+
+    public WebElement getVacationDaysButton() {
+        return vacationDaysButton;
+    }
+
+    public WebElement getVacationDaysText() {
+        return vacationDaysText;
+    }
+
+    public WebElement getSystemButton() {
+        return systemButton;
+    }
 }

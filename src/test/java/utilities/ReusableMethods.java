@@ -5,6 +5,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
+import pages.LoginPage;
 
 import java.awt.Point;
 import java.awt.*;
@@ -23,17 +24,33 @@ import static utilities.Driver.getDriver;
 public class ReusableMethods {
     private static int timeout = 5;
 
+    LoginPage loginPage=new LoginPage();
 
     public static String getCompany(String company){
         return ConfigReader.getProperty(company);
     }
 
     public static String getUsername(String username){
+
         return ConfigReader.getProperty(username);
     }
 
     public static String getPassword(String password){
+
         return ConfigReader.getProperty(password);
+    }
+
+
+    public  void selectCompany(String company){
+        ReusableMethods.wait(2);
+        loginPage.getCompanyDropdownTable().click();
+        ReusableMethods.wait(2);
+        List<WebElement> companies= loginPage.getCompanyDropdownList();
+        for (WebElement comp:companies){
+            if(comp.getText().equalsIgnoreCase(ReusableMethods.getCompany(company))){
+                comp.click();
+            }
+        }
     }
 
 
