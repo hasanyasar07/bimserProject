@@ -9,18 +9,11 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.time.Duration;
 public class Driver {
-    /*
-     JUnit'de WebDriver objesi TestBase'den geliyordu
-     TestNG extends ile baglanma zorunlulugunu ortadan kaldirmak
-     ve testi yazanlara daha fazla kontrol imkani vermek icin
-     TestBase yerine Driver class'inda static 2 method ile
-     driver olusturma ve kapatma islemlerini yapmayi tercih etmistir
-     */
+
     private Driver(){
-        // Bu constructor default constructor ile ayni islevi yapan parametresiz constructor'dir
-        // buna erisimi kontrol edebilecegimiz icin bu constructor'i olusturduk
+
     }
-    static WebDriver driver; // biz deger atamadigimiz icin Java default olarak null point eder
+    static WebDriver driver;
     public static WebDriver getDriver(){
         String browser = ConfigReader.getProperty("browser");
         if (driver == null){
@@ -37,17 +30,9 @@ public class Driver {
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();
                     break;
-                /*
-                case "headless-chrome" :
-                    ChromeOptions chromeOptions=new ChromeOptions();
-                    chromeOptions.setHeadless(true);
-                    driver=new ChromeDriver(chromeOptions);
-                    break;
-                 */
+
                 default:
-
-
-                    // Arkadaşlar burasını yoruma aldım. Bende çalışmadığı için bilginiz olsun.
+                    // burasını yoruma aldım. Bende çalışmadığı için bilginiz olsun.
                    // WebDriverManager.chromedriver().setup();
                     
 
