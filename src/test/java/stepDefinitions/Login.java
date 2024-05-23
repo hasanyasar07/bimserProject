@@ -11,6 +11,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Login {
@@ -65,4 +66,87 @@ public class Login {
         ReusableMethods.wait(1);
         Driver.closeDriver();
     }
+
+    //Negative login test
+    @Given("Select the correct {string}, enter the correct {string} and incorrect {string}")
+    public void select_the_correct_enter_the_correct_and_incorrect(String company, String username, String incorrectPassword) {
+        ReusableMethods.wait(2);
+        loginPage.companyDropdownTable.click();
+        ReusableMethods.wait(2);
+        List<WebElement> companies=loginPage.companyDropdownList;
+        for (WebElement comp:companies){
+            if(comp.getText().equalsIgnoreCase(ReusableMethods.getCompany(company))){
+                comp.click();
+            }
+        }
+        ReusableMethods.wait(1);
+        loginPage.userName.sendKeys(ReusableMethods.getUsername(username));
+        ReusableMethods.wait(1);
+        loginPage.password.sendKeys((ReusableMethods.getPassword(incorrectPassword)));
+        ReusableMethods.wait(1);
+    }
+    @Given("Confirm that incorrect message is {string}")
+    public void confirm_that_incorrect_message_is(String message) {
+        ReusableMethods.wait(1);
+        Assert.assertTrue(loginPage.incorrectMessage.getText().equalsIgnoreCase(message));
+        loginPage.incorrectMessageButton.click();
+        ReusableMethods.wait(1);
+        Driver.closeDriver();
+    }
+
+    @Given("Select the correct {string}, enter the incorrect {string} and correct {string}")
+    public void select_the_correct_enter_the_incorrect_and_correct(String company, String incorrectUsername, String password) {
+        ReusableMethods.wait(2);
+        loginPage.companyDropdownTable.click();
+        ReusableMethods.wait(2);
+        List<WebElement> companies=loginPage.companyDropdownList;
+        for (WebElement comp:companies){
+            if(comp.getText().equalsIgnoreCase(ReusableMethods.getCompany(company))){
+                comp.click();
+            }
+        }
+        ReusableMethods.wait(1);
+        loginPage.userName.sendKeys(ReusableMethods.getUsername(incorrectUsername));
+        ReusableMethods.wait(1);
+        loginPage.password.sendKeys((ReusableMethods.getPassword(password)));
+        ReusableMethods.wait(1);
+    }
+
+    @Given("Select the correct {string}, enter the incorrect {string} and {string}")
+    public void select_the_correct_enter_the_incorrect_and(String company, String incorrectUsername, String incorrectPassword) {
+        ReusableMethods.wait(2);
+        loginPage.companyDropdownTable.click();
+        ReusableMethods.wait(2);
+        List<WebElement> companies=loginPage.companyDropdownList;
+        for (WebElement comp:companies){
+            if(comp.getText().equalsIgnoreCase(ReusableMethods.getCompany(company))){
+                comp.click();
+            }
+        }
+        ReusableMethods.wait(1);
+        loginPage.userName.sendKeys(ReusableMethods.getUsername(incorrectUsername));
+        ReusableMethods.wait(1);
+        loginPage.password.sendKeys((ReusableMethods.getPassword(incorrectPassword)));
+        ReusableMethods.wait(1);
+    }
+
+    @Given("Select the incorrect {string}, enter the correct {string} and {string}")
+    public void select_the_incorrect_enter_the_correct_and(String company, String username, String password) {
+        ReusableMethods.wait(2);
+        loginPage.companyDropdownTable.click();
+        ReusableMethods.wait(2);
+        List<WebElement> companies=loginPage.companyDropdownList;
+        for (WebElement comp:companies){
+            if(comp.getText().equalsIgnoreCase(company)){
+                comp.click();
+            }
+        }
+        ReusableMethods.wait(1);
+        loginPage.userName.sendKeys(ReusableMethods.getUsername(username));
+        ReusableMethods.wait(1);
+        loginPage.password.sendKeys((ReusableMethods.getPassword(password)));
+        ReusableMethods.wait(1);
+    }
+
+
 }

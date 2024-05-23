@@ -18,7 +18,7 @@ public class LoginPage {
     @FindBy(id="cbCompany_B-1Img")
     public WebElement companyDropdownTable;
 
-    @FindAll(@FindBy(xpath = "//tr[@class='dxeListBoxItemRow']"))
+    @FindBy(xpath = "//tr[@class='dxeListBoxItemRow']")
     public List<WebElement> companyDropdownList;
 
     @FindBy(id="teUser_I")
@@ -35,6 +35,12 @@ public class LoginPage {
 
     @FindBy(id = "xppcProcurationList_xbtnContinue_CD")
     public WebElement continueButton;
+
+    @FindBy(xpath ="//span[@id='xmmMessage']")
+    public WebElement incorrectMessage;
+
+    @FindBy(id = "MessageBox1_xpcMsgBox_xbtnOK_CD")
+    public WebElement incorrectMessageButton;
 
 
 
