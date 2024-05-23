@@ -13,4 +13,18 @@ public class Dashboardpage {
     @FindBy(xpath = "//a[@id='userId']")
     public WebElement userIdText;
 
+    @FindBy(id = "init-app-menu")
+    public WebElement appMenu;
+
+    @FindBy(xpath = "//h3[text()='Sistem']")
+    public WebElement systemButton;
+
+    @FindBy(xpath = "//h3[text()='Ortak Tanımlar']")
+    public WebElement commonDefinitionsButton;
+
+    @FindBy(xpath = "//h3[text()='Tatil Günleri']")
+    public WebElement vacationDaysButton;
+
+    @FindBy(id = "TASPxRoundPanel1_xlbHeader")
+    public WebElement vacationDaysText;
 }
