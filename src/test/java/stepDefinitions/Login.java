@@ -96,7 +96,15 @@ public class Login extends BaseStep{
 
     @Given("Select the incorrect {string}, enter the correct {string} and {string}")
     public void select_the_incorrect_enter_the_correct_and(String company, String username, String password) {
-        reusableMethods.selectCompany(company);
+        ReusableMethods.wait(2);
+        loginPage.getCompanyDropdownTable().click();
+        ReusableMethods.wait(2);
+        List<WebElement> companies= loginPage.getCompanyDropdownList();
+        for (WebElement comp:companies){
+            if(comp.getText().equalsIgnoreCase(company)){
+                comp.click();
+            }
+        }
         ReusableMethods.wait(1);
         loginPage.getUserName().sendKeys(ReusableMethods.getUsername(username));
         ReusableMethods.wait(1);
